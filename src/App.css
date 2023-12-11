@@ -27,7 +27,23 @@
 .App-link {
   color: #61dafb;
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.csv-report-btn {
+  text-decoration: none;
+  color: inherit;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +51,41 @@
   to {
     transform: rotate(360deg);
   }
+}
+.footer-paginate {
+  position: relative;
+}
+.pagination {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  list-style: none;
+  display: flex;
+  //justify-content: end;
+  //align-items: center;
+  //margin: 3rem;
+  font-size: 1.2rem;
+  gap: 5px;
+}
+
+.pagination .page-num {
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 400;
+  background-color: #637381;
+  color: white;
+}
+.pagination .hide {
+  display: none;
+}
+.pagination .page-num:hover {
+  background-color: #ff9900;
+
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #ff9900;
+  color: #fff;
 }

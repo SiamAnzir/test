@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CSVLink } from "react-csv";
 import generatePDF from "../services/reportGenerator";
+import { convertJsonToWorkbook, generateExcelFile } from "./ExportExcel";
 
 const PrintTable = () => {
   const array = [
@@ -42,6 +43,28 @@ const PrintTable = () => {
     {
       id: 6,
       name: "Siam",
+      contactNo: "01620304621",
+      email: "jhon@email.com",
+      role: "Developer",
+    },
+  ];
+  const excelData = [
+    {
+      id: 1,
+      user: {
+        name: "Siam",
+        Age: 26,
+      },
+      contactNo: "01620304621",
+      email: "jhon@email.com",
+      role: "Developer",
+    },
+    {
+      id: 2,
+      user: {
+        name: "Anzir",
+        Age: 26,
+      },
       contactNo: "01620304621",
       email: "jhon@email.com",
       role: "Developer",
@@ -133,6 +156,11 @@ const PrintTable = () => {
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
   };
+
+  const handleExport = () => {
+    const workbook = convertJsonToWorkbook(excelData);
+    generateExcelFile(workbook, "data");
+  };
   console.log("isCheckAll:", isCheckAll);
   console.log("selectedItems", selectedItems);
   console.log("isCheck", isCheck);
@@ -148,6 +176,9 @@ const PrintTable = () => {
             CSV Download{" "}
           </CSVLink>
         </button>
+        <br></br>
+        <br></br>
+        <button onClick={handleExport}>Excel Download</button>
         <br></br>
         <br></br>
         <button onClick={() => downloadTextFile(array)}>.txt Download </button>
